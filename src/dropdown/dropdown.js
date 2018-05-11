@@ -30,6 +30,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.multiMap', 'ui.bootstrap.
   this.open = function(dropdownScope, element, appendTo) {
     if (!openScope) {
       $document.on('click', closeDropdown);
+      $document.on('touchend', closeDropdown);
     }
 
     if (openScope && openScope !== dropdownScope) {
@@ -62,6 +63,7 @@ angular.module('ui.bootstrap.dropdown', ['ui.bootstrap.multiMap', 'ui.bootstrap.
   this.close = function(dropdownScope, element, appendTo) {
     if (openScope === dropdownScope) {
       $document.off('click', closeDropdown);
+      $document.off('touchend', closeDropdown);
       $document.off('keydown', this.keybindFilter);
       openScope = null;
     }
